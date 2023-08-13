@@ -1,0 +1,2 @@
+module Customer::CafedateHelper
+end
