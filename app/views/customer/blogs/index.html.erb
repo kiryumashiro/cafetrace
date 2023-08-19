@@ -1,0 +1,8 @@
+<% @blogs.each do |blog| %>
+  <div>
+    <%= image_tag blog.get_image %>
+    <p>店名：<%= blog.name %></p>
+    <p>コメント：<%= blog.description %></p>
+    <p>ユーザーネーム：<%= blog.customer.first_name %></p>
+  </div>
+<% end %>

@@ -3,7 +3,11 @@
   <%= image_tag @blog.get_image %>
   <p>店名：<%= @blog.name %></p>
   <p>コメント：<%= @blog.description %></p>
-  <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
-  <p>ユーザーネーム：<%= @blog.customer.name %></p>
+  <p>ユーザーネーム：<%= @blog.customer.first_name %></p>
   <p>投稿日：<%= @blog.created_at.strftime('%Y/%m/%d') %></p>
+  
+  <% if @blog.customer == current_customer %>
+  <%= link_to "Edit", edit_blog_path(@blog.id), class: "btn btn-sm btn-success" %>
+  <% end %>
 </div>
+

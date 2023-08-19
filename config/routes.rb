@@ -36,7 +36,11 @@ Rails.application.routes.draw do
         # post '/guest_login', to: 'guest_sessions#create'
       end
     end
-    resources :blogs
+    resources :blogs do
+      collection do
+        get 'my_blogs'
+      end
+    end
     # Rails.application.routes.draw do
     #   # ... 他のルート
     resources :cafedates, only: [:create]

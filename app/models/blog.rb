@@ -1,6 +1,6 @@
 class Blog < ApplicationRecord
   has_one_attached :image
-  belongs_to :user
+  belongs_to :customer
   
   def get_image
     unless image.attached?

@@ -1,0 +1,25 @@
+<div class="text-center">
+    <h3 class="text-center">ブログ編集画面</h3>
+    <%= form_with model: @blog do |f| %>
+    
+      <div class="form-group">
+        <label for="book_title">画像</label><br>
+        <%= image_tag url_for(@blog.image) %>
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+      
+      <div class="form-group">
+        <label for="book_title">店名</label><br>
+        <%= f.text_field :name %>
+      </div>
+      
+      <div class="form-group">
+        <label for="book_opinion">コメント</label><br>
+        <%= f.text_area :description %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.submit '保存' ,class: 'btn btn-success' %>
+      </div>
+    <% end %>
+</div>

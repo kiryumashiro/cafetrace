@@ -20,10 +20,30 @@ class Customer::BlogsController < ApplicationController
     @blog = Blog.find(params[:id])  
   end
   
+  def index
+    @all_blogs = Blog.all
+  end
+  
+  def my_blogs
+    @my_blogs = current_customer.blogs
+  end
+  
+  def edit
+    @blog = Blog.find(params[:id])
+  end
+  
+  def update
+    @blog = Blog.find(params[:id])
+    if @blog.update(blog_params)
+      redirect_to @blog, notice: '投稿が更新されました。'
+    else
+      render :edit
+    end
+  end
   # 投稿データのストロングパラメータ
   private
 
   def blog_params
-    params.require(:blog).permit(:name, :image, :description)
+    params.require(:blog).permit(:customer_id, :name, :image, :description)
   end
 end
