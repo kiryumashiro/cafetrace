@@ -37,6 +37,8 @@ Rails.application.routes.draw do
       end
     end
     resources :blogs do
+      resource :favorites, only: [:create, :destroy]
+      resources :comments, only: [:create, :destory, :index]
       collection do
         get 'my_blogs'
       end
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
     # Rails.application.routes.draw do
     #   # ... 他のルート
     resources :cafedates, only: [:create]
+
       
     
     devise_scope :customer do

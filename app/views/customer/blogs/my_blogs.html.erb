@@ -2,5 +2,7 @@
 <ul>
   <% @my_blogs.each do |blog| %>
     <li><%= link_to blog.name, blog_path(blog) %></li>
+    <p>いいね件数 <%= blog.favorites.count %> </p>
   <% end %>
 </ul>
+

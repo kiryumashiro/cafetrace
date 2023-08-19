@@ -1,6 +1,9 @@
 class Customer < ApplicationRecord
   has_many :blogs, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :cafedates, dependent: :destroy
+  has_many :comments
+  
   def self.guest
     find_or_create_by!(email: 'guest@example.com', encrypted_password: '1234567') do |customer|
       customer.last_name = 'guest'

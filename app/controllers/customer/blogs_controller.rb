@@ -17,7 +17,7 @@ class Customer::BlogsController < ApplicationController
   end
   
   def show
-    @blog = Blog.find(params[:id])  
+    @blog = Blog.find(params[:id])
   end
   
   def index
@@ -44,6 +44,6 @@ class Customer::BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:customer_id, :name, :image, :description)
+    params.require(:blog).permit(:customer_id, :blog_id, :name, :image, :description)
   end
 end
