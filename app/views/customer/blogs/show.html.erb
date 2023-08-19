@@ -1,0 +1,9 @@
+<div class="text-center">
+  <h1>ブログ詳細ページ</h1>
+  <%= image_tag @blog.get_image %>
+  <p>店名：<%= @blog.name %></p>
+  <p>コメント：<%= @blog.description %></p>
+  <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
+  <p>ユーザーネーム：<%= @blog.customer.name %></p>
+  <p>投稿日：<%= @blog.created_at.strftime('%Y/%m/%d') %></p>
+</div>

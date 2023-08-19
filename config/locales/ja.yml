@@ -1,4 +1,9 @@
 ja:
+  enums:
+    cafedate:
+      pin_type:
+        go_schedule_pins: 行きたいカフェ
+        been_pins: 行ったカフェ
   activerecord:
     models:
       customer: 会員情報

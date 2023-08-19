@@ -1,4 +1,11 @@
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+
 <h1>top</h1>
 <%= link_to "新規登録", new_customer_registration_path %>
 <%= link_to "ログイン", new_customer_session_path %>
+<%#= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, method: :post %>
+
+<%= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, method: :post %>
+
 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>

@@ -5,7 +5,20 @@ class Customer::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     flash[:notice] = 'ログインに成功しました'
     maps_path
+  end 
+  
+  # def new_guest
+  #   customer = Customer.guest
+  #   sign_in customer   # ユーザーをログインさせる
+  #   redirect_to maps_path, notice: 'ゲストユーザーとしてログインしました。'
+  # end
+
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to maps_path, notice: 'ゲストユーザーとしてログインしました。'
   end
+
   # GET /resource/sign_in
   # def new
   #   super

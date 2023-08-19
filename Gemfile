@@ -57,3 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'rails-i18n'
+gem 'bootstrap'
+gem 'gmaps4rails'
+gem "enum_help"
+gem 'dotenv-rails'

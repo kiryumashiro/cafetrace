@@ -23,17 +23,27 @@ Rails.application.routes.draw do
     get '/' => 'homes#top' 
   end
 
-  
+
   # 会員側ルーティング
   scope module: :customer do
     root to: "homes#top"
-    resources :maps, only: [:index]
+    resources :maps, only: [:index, :create]
     resources :customers, only: [:show, :edit, :update] do
       collection do
         get 'check_out'
         get 'withdraw'
         patch 'withdraw_update'
+        # post '/guest_login', to: 'guest_sessions#create'
       end
+    end
+    resources :blogs
+    # Rails.application.routes.draw do
+    #   # ... 他のルート
+    resources :cafedates, only: [:create]
+      
+    
+    devise_scope :customer do
+      post 'customer/guest_sign_in', to: 'sessions#guest_sign_in'
     end
   end
 
