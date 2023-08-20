@@ -18,10 +18,16 @@ class Customer::BlogsController < ApplicationController
   
   def show
     @blog = Blog.find(params[:id])
+    # @blogs = @blog.blog_comments
   end
   
   def index
     @all_blogs = Blog.all
+    # @blogs = Blog.all
+    # @blog = Blog.find(params[:id])
+    # @blogs = @blog.blog_comments
+    # @blog_comment = blog.find(params[:id])
+    # @comment_counts = Comment.group(:blog_id).count
   end
   
   def my_blogs

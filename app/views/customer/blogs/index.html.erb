@@ -8,8 +8,7 @@
       <p>店名：<%= blog.name %></p>
       <p>コメント：<%= blog.description %></p>
       <p>ユーザーネーム：<%= blog.customer.first_name %></p>
-
-
+      <p>コメント数: <%= link_to blog.blog_comments.count, blog_comments_path(blog) %></p>
     </div>
     <!--いいね機能-->
     <div id="favorite_buttons_<%= blog.id %>">

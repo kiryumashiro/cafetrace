@@ -12,3 +12,9 @@
 #   email: 'guest_member@example.com',
 #   encrypted_password: 'password'
 # )
+
+# 管理者のログイン情報
+ Admin.create!(
+     email: 'admin@example.com',
+     password: 'aaasss'
+     )
