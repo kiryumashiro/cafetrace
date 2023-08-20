@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'comments/destroy'
+  end
+  namespace :admin do
+    get 'blogs/index'
+    get 'blogs/show'
+    get 'blogs/destroy'
+  end
+  namespace :admin do
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/update'
+  end
   devise_for :customers, controllers: {
     sessions:      'customer/sessions',
     passwords:     'customer/passwords',
@@ -20,7 +34,11 @@ Rails.application.routes.draw do
   
   # 管理者側ルーティング
   namespace :admin do
-    get '/' => 'homes#top' 
+    get '/' => 'homes#top'
+    resources :customers, only: [:index, :show, :edit, :update] 
+    resources :blogs, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
   end
 
 
@@ -44,6 +62,20 @@ Rails.application.routes.draw do
       end
     end
     # Rails.application.routes.draw do
+  namespace :admin do
+    get 'comments/destroy'
+  end
+  namespace :admin do
+    get 'blogs/index'
+    get 'blogs/show'
+    get 'blogs/destroy'
+  end
+  namespace :admin do
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/update'
+  end
     #   # ... 他のルート
     resources :cafedates, only: [:create]
 

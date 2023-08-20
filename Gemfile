@@ -62,3 +62,4 @@ gem 'gmaps4rails'
 gem "enum_help"
 gem 'dotenv-rails'
 gem 'jquery-rails'
+gem 'kaminari'

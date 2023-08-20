@@ -4,4 +4,7 @@
     
     <h1>top</h1>
     <%= link_to "ログイン", new_admin_session_path %>
+    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+    <%= link_to "会員一覧", admin_customers_path %>
+    <%= link_to "ブログ一覧", admin_blogs_path %>
 </div>
