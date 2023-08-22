@@ -5,11 +5,11 @@ class Customer < ApplicationRecord
   has_many :blog_comments
   
   def self.guest
-    find_or_create_by!(email: 'guest@example.com', encrypted_password: '1234567') do |customer|
+    find_or_create_by!(email: 'guest@example.com') do |customer|
       customer.last_name = 'guest'
       customer.first_name = 'guest'
       customer.phone_number = '0000000000'
-      customer.encrypted_password = '1234567'
+      customer.password = '1234567'
     end
   end
   
