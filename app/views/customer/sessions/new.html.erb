@@ -3,7 +3,6 @@
   <h2 class="mb-4">ログイン</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "mb-5"}) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
     <div class="form-group">
       <%= f.label :email, "メールアドレス" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
