@@ -1,7 +1,28 @@
 <div class="text-center">
-  <h1><%= @blog.customer.last_name %> の投稿一覧</h1>
-  <% @blog.customer.blogs.each do |blog| %>
-    <%= link_to blog.name, admin_blog_path(blog) %>
-    <%= link_to '削除', admin_blog_path(blog), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+  <h1>ブログ詳細ページ</h1>
+  <%= image_tag @blog.get_image %>
+  <p>店名：<%= @blog.name %></p>
+  <p>コメント：<%= @blog.description %></p>
+  
+    <p>ユーザーネーム：<%= link_to "#{@blog.customer.last_name} #{@blog.customer.first_name}", customer_blogs_admin_blogs_path(id: @blog.id) %></p>
+  
+  <p>投稿日：<%= @blog.created_at.strftime('%Y/%m/%d') %></p>
+
+  <%= link_to '投稿を削除', admin_blog_path(@blog), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+  
+  <h1>この投稿のコメント一覧</h1>
+  <% @blog.blog_comments.each do |blog_comment| %>
+    <div>
+      <%= blog_comment.customer.first_name %>
+      <%= blog_comment.created_at.strftime('%Y/%m/%d') %><%= blog_comment.comment %>
+      <%= link_to '削除', admin_blog_comment_path(blog_comment), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+    </div>
   <% end %>
+  
+
+
+
+  <%= link_to "戻る", :back %>
+
 </div>
+

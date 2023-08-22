@@ -1,0 +1,10 @@
+<div class="text-center">
+  <h1><%= @blog.customer.last_name %> の投稿一覧</h1>
+  <% @blog.customer.blogs.each do |blog| %>
+    <%= link_to blog.name, admin_blog_path(blog) %>
+    <%= link_to '削除', admin_blog_path(blog), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+  <% end %>
+  <br>
+  <%= link_to "投稿一覧ページに戻る", admin_blogs_path %>
+
+</div>

@@ -11,6 +11,7 @@
     <div>
       <%= blog_comment.customer.first_name %>
       <%= blog_comment.created_at.strftime('%Y/%m/%d') %><%= blog_comment.comment %>
+      <%= link_to '削除', blog_comment_path(id: blog_comment.id), method: :delete, data: { confirm: '本当に削除しますか？' } %>
     </div>
   <% end %>
 </div>

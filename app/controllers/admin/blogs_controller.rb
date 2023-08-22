@@ -4,6 +4,10 @@ class Admin::BlogsController < ApplicationController
   def index
     @blogs = Blog.all
   end
+  
+  def customer_blogs
+    @blog = Blog.find(params[:id])
+  end
 
   def show
     @blog = Blog.find(params[:id])

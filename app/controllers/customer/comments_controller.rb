@@ -12,7 +12,13 @@ class Customer::CommentsController < ApplicationController
     comment.save
     redirect_to blog_comments_path(blog.id)
   end
-
+  
+  def destroy
+    @blog_comment = BlogComment.find(params[:id])
+    @blog_comment.destroy
+    redirect_to blog_comments_path, notice: 'コメントが削除されました。'
+  end
+  
   private
   def blog_comment_params
     params.require(:blog_comment).permit(:customer_id, :comment, :blog_id)

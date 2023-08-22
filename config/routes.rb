@@ -38,6 +38,9 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update] 
     resources :blogs, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
+      collection do
+        get 'customer_blogs'
+      end
     end
   end
 
@@ -56,7 +59,7 @@ Rails.application.routes.draw do
     end
     resources :blogs do
       resource :favorites, only: [:create, :destroy]
-      resources :comments, only: [:create, :destory, :index]
+      resources :comments, only: [:create, :destroy, :index]
       collection do
         get 'my_blogs'
       end
