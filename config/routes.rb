@@ -16,14 +16,11 @@ Rails.application.routes.draw do
   # end
   devise_for :customers, controllers: {
     sessions:      'customer/sessions',
-    passwords:     'customer/passwords',
     registrations: 'customer/registrations'
   }
   
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions:      'admin/sessions',
-    passwords:     'admin/passwords',
-    registrations: 'admin/registrations'
   }
   
   # 管理者側ルーティング
