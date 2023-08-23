@@ -1,8 +1,46 @@
 Rails.application.routes.draw do
+  root to: 'customer/homes#top'
+  # namespace :admin do
+  #   get 'comments/destroy'
+  # end
+  # namespace :admin do
+  #   get 'blogs/index'
+  #   get 'blogs/show'
+  #   get 'blogs/destroy'
+  # end
+  # namespace :admin do
+  #   get 'customers/index'
+  #   get 'customers/show'
+  #   get 'customers/edit'
+  #   get 'customers/update'
+  # end
+  devise_for :customers, controllers: {
+    sessions:      'customer/sessions',
+    passwords:     'customer/passwords',
+    registrations: 'customer/registrations'
+  }
+  
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions:      'admin/sessions',
+    passwords:     'admin/passwords',
+    registrations: 'admin/registrations'
+  }
+  
+  # 管理者側ルーティング
+  namespace :admin do
+    get '/' => 'homes#top'
+    resources :customers, only: [:index, :show, :edit, :update] 
+    resources :blogs, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+      collection do
+        get 'customer_blogs'
+      end
+    end
+  end
   
   # 会員側ルーティング
   scope module: :customer do
-    root to: "homes#top"
+    # root to: "homes#top"
     resources :maps, only: [:index, :create]
     resources :customers, only: [:show, :edit, :update] do
       collection do
@@ -20,45 +58,6 @@ Rails.application.routes.draw do
       end
     end
     
-  # 管理者側ルーティング
-  namespace :admin do
-    get '/' => 'homes#top'
-    resources :customers, only: [:index, :show, :edit, :update] 
-    resources :blogs, only: [:index, :show, :destroy] do
-      resources :comments, only: [:destroy]
-      collection do
-        get 'customer_blogs'
-      end
-    end
-  end
-  
-  namespace :admin do
-    get 'comments/destroy'
-  end
-  namespace :admin do
-    get 'blogs/index'
-    get 'blogs/show'
-    get 'blogs/destroy'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  devise_for :customers, controllers: {
-    sessions:      'customer/sessions',
-    passwords:     'customer/passwords',
-    registrations: 'customer/registrations'
-  }
-  
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions:      'admin/sessions',
-    passwords:     'admin/passwords',
-    registrations: 'admin/registrations'
-  }
-  
-  
 
 
 
