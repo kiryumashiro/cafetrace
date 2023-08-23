@@ -2,7 +2,7 @@ class Customer < ApplicationRecord
   has_many :blogs, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :cafedates, dependent: :destroy
-  has_many :blog_comments
+  has_many :blog_comments, dependent: :destroy
   
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|
