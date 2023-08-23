@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   namespace :admin do
     get 'comments/destroy'
   end
@@ -25,26 +26,7 @@ Rails.application.routes.draw do
     registrations: 'admin/registrations'
   }
   
-  # namespace :customer do
-  #   get 'customers/show'
-  #   get 'customers/edit'
-  #   get 'customers/update'
-  #   get 'customers/withdraw'
-  # end
   
-  # 管理者側ルーティング
-  namespace :admin do
-    get '/' => 'homes#top'
-    resources :customers, only: [:index, :show, :edit, :update] 
-    resources :blogs, only: [:index, :show, :destroy] do
-      resources :comments, only: [:destroy]
-      collection do
-        get 'customer_blogs'
-      end
-    end
-  end
-
-
   # 会員側ルーティング
   scope module: :customer do
     root to: "homes#top"
@@ -64,6 +46,21 @@ Rails.application.routes.draw do
         get 'my_blogs'
       end
     end
+    
+  # 管理者側ルーティング
+  namespace :admin do
+    get '/' => 'homes#top'
+    resources :customers, only: [:index, :show, :edit, :update] 
+    resources :blogs, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+      collection do
+        get 'customer_blogs'
+      end
+    end
+  end
+
+
+
     # Rails.application.routes.draw do
   # namespace :admin do
   #   get 'comments/destroy'
