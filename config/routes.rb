@@ -65,20 +65,20 @@ Rails.application.routes.draw do
       end
     end
     # Rails.application.routes.draw do
-  namespace :admin do
-    get 'comments/destroy'
-  end
-  namespace :admin do
-    get 'blogs/index'
-    get 'blogs/show'
-    get 'blogs/destroy'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
+  # namespace :admin do
+  #   get 'comments/destroy'
+  # end
+  # namespace :admin do
+  #   get 'blogs/index'
+  #   get 'blogs/show'
+  #   get 'blogs/destroy'
+  # end
+  # namespace :admin do
+  #   get 'customers/index'
+  #   get 'customers/show'
+  #   get 'customers/edit'
+  #   get 'customers/update'
+  # end
     #   # ... 他のルート
     resources :cafedates, only: [:create]
 
