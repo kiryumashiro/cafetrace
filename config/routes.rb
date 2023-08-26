@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   
   # 会員側ルーティング
   scope module: :customer do
-    # root to: "homes#top"
+    get '/about' => 'homes#about'
     resources :maps, only: [:index, :create]
     resources :customers, only: [:show, :edit, :update] do
       collection do
@@ -75,7 +75,7 @@ Rails.application.routes.draw do
   #   get 'customers/update'
   # end
     #   # ... 他のルート
-    resources :cafedates, only: [:create]
+    resources :cafedates, only: [:index, :create]
 
       
     

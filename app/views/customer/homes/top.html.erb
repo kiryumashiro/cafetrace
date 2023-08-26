@@ -1,14 +1,27 @@
-<div class="text-center">
-    <p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
+<div class="toppage">
+  <div class="text-center">
+  <% if notice %>
+    <p id="notice" class="custom-notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p id="alert" class="custom-alert"><%= alert %></p>
+  <% end %>
+    <%= stylesheet_link_tag 'toppage', media: 'all' %>
     
-    <h1>top</h1>
-    <%= link_to "新規登録", new_customer_registration_path %>
-    <%= link_to "ログイン", new_customer_session_path %>
-    <%#= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, method: :post %>
-    
-    <%= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, method: :post %>
-    
-    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-</div>
+      <div class="text-right min-vh-100">
+          <div class="bg_test" style="margin-right: 20px;">
 
+            <%= link_to "About", about_path, class: "btn btn-secondary btn-lg", tabindex: "-1", role: "button", "aria-disabled" => "false" %>
+
+            <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-secondary btn-lg", tabindex: "-1", role: "button", "aria-disabled" => "false" %>
+
+            <%= link_to "ログイン", new_customer_session_path, class: "btn btn-secondary btn-lg", tabindex: "-1", role: "button", "aria-disabled" => "false" %>
+            <%#= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, method: :post %>
+            
+            <%= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, method: :post , class: "btn btn-secondary btn-lg", tabindex: "-1", role: "button", "aria-disabled" => "false" %>
+            
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete , class: "btn btn-secondary btn-lg", tabindex: "-1", role: "button", "aria-disabled" => "false" %>
+        </div>
+      </div>
+  </div>
+</div>

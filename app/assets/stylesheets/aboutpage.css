@@ -1,0 +1,16 @@
+.aboutpage {
+  background-image: url('about.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* ビューポートの高さに合わせる */
+  display: flex;
+  align-items: center;
+}
+
+.about-content {
+  background: rgba(255, 255, 255, 0.8); /* コンテンツの背景色（半透明） */
+  padding: 20px;
+  text-align: center;
+  max-width: 600px; /* コンテンツの最大幅 */
+  margin: 0 auto; /* 水平中央に配置 */
+}

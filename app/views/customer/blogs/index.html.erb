@@ -17,3 +17,19 @@
   <% end %>
 </div>
 
+<% @all_blogs.each do |blog| %>
+<div class = "card mb-4 chadow-sm">
+    <%= image_tag blog.get_image %>
+    <div class = "card-body">
+      <div class = "card-text">
+        <p>店名：<%= blog.name %></p>
+        <p>コメント：<%= blog.description %></p>
+      </div>
+      <div class = "d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-end">
+          <p>ありがとう</p>
+        </div>
+      </div>
+    </div>
+</div>
+<% end %>

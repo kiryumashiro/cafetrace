@@ -1,0 +1,16 @@
+.logpage {
+  background-image: url('login.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* ビューポートの高さに合わせる */
+  display: flex;
+  align-items: center;
+}
+
+.login-text{
+  text-align: center;
+}
+
+.custom-input{
+  text-align: center;
+}

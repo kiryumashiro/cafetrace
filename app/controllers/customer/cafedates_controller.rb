@@ -1,5 +1,14 @@
 class Customer::CafedatesController < ApplicationController
-    
+  
+  def index
+    case params[:pin_type]
+    when 'go_schedule'
+      @cafedates = Cafedate.go_schedule_pins
+    when 'been'
+      @cafedates = Cafedate.been_pins
+    end
+  end
+  
   def create
     @cafedate = current_customer.cafedates.build(cafedate_params)
     if @cafedate.save!

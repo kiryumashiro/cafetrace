@@ -16,7 +16,7 @@
 <!--  <script>-->
 <!--    function initMap(){-->
 <!--      let map = new google.maps.Map(document.getElementById('map'), {-->
-      center: {lat: 24.2867<%#= @maps.latitude %>, lng: 153.9807<%#= @maps.longitude %> },
+      <!--center: {lat: 24.2867<%#= @maps.latitude %>, lng: 153.9807<%#= @maps.longitude %> },-->
 <!--      zoom: 15-->
 <!--      });-->
 <!--    }-->
@@ -33,14 +33,10 @@
 <div class="container">
   <center>
     <header>
-      <h1>サンプル</h1>
-      <%= link_to "マイページ", customer_path(current_customer) %>
-      <%= link_to "ブログ一覧", blogs_path %>
-      
+      <h1>My cafemap</h1>
     </header>
   </center>
-    
-  <h2>gmap</h2>
+  <br>
   <div id='map' class='map'></div>
 </div>
 
@@ -233,3 +229,7 @@ function initMap() {
 <%= @go_schedule_cafedates.inspect %><br>
 
 <%= @been_cafedates.inspect %>
+
+<%= link_to '行きたいカフェ一覧', cafedates_path(pin_type: 'go_schedule') %>
+
+<%= link_to '行ったカフェ一覧', cafedates_path(pin_type: 'been') %>

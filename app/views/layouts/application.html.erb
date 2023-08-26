@@ -16,40 +16,42 @@
 
   <body>
     <!--<div class="container-fluid">-->
+    <% if customer_signed_in? %>
       <div class="row">
-        <div class="col-md-3 sidebar" style="background-color:#808080">
+        <div class="col-md-3 sidebar min-vh-100" style="background-color:#808080">
           <!--<div id="container">-->
             <!--<header id="header">-->
-              <h1>menu</h1>
+              <h1><%= link_to "menu", maps_path, class: "test1", style: "color: black !important;" %></h1>
                 <nav>
                 <ul>
-                  <li><%= link_to "Top", root_path %></li>
-                  <li><a href="#">About</a></li>
-                  <li class="has-child"><a href="#">Service</a>
+                  <li><%= link_to "About", about_path %></li>
+                  <li class="has-child"><%= link_to "Map", maps_path %>
                     <ul>
-                    <li><a href="#">Service Top</a></li>
-                    <li><a href="#">Service-1</a></li>
-                    <li class="has-child"><a href="#">Service-2</a>
+                    <!--<li><%#= link_to "Map-top", maps_path %></li>-->
+                    <!--<li><a href="#">Service-1</a></li>-->
+                    <li class="has-child"><%= link_to "My cafelist", maps_path %>
                       <ul>
-                        <li><a href="#">Service-2 Top</a></li>
-                        <li><a href="#">Service-2-1</a></li>
-                        <li><a href="#">Service-2-2</a></li>
-                        <li><a href="#">Service-2-3</a></li>
-                        <li><a href="#">Service-2-4</a></li>
+                        <li><a href="#"></a></li>
+                        <li><%= link_to "Cafe I want to go to", cafedates_path(pin_type: 'go_schedule') %></li>
+                        <li><%= link_to "Cafe I've been to", cafedates_path(pin_type: 'been') %></li>
+                        <!--<li><a href="#">Service-2-3</a></li>-->
+                        <!--<li><a href="#">Service-2-4</a></li>-->
                       </ul>
                       </li>
-                    <li><a href="#">Service-3</a></li>
+                    <!--<li><a href="#">Service-3</a></li>-->
                     </ul>
                   </li>
-                  <li class="has-child"><a href="#">Blog</a>
+                  <li class="has-child"><%= link_to "Blog", blogs_path %>
                     <ul>
-                    <li><a href="#">Blog Top</a></li>
-                    <li><a href="#">Blog-1</a></li>
-                    <li><a href="#">Blog-2</a></li>
-                    <li><a href="#">Blog-3</a></li>
-                    <li><a href="#">Blog-4</a></li>
+                    <li><%= link_to "Blogs", blogs_path %></li>
+                    <li><%= link_to "My blogs", my_blogs_blogs_path %></li>
+                    <!--<li><a href="#">Blog-2</a></li>-->
+                    <!--<li><a href="#">Blog-3</a></li>-->
+                    <!--<li><a href="#">Blog-4</a></li>-->
                     </ul>
                   </li>
+                  <li><%= link_to "My page", customer_path(current_customer) %></li>
+                  <li><%= link_to "Log out", destroy_customer_session_path, method: :delete %></li>
                 </ul>
               </nav>
             <!--</header>-->
@@ -59,10 +61,11 @@
           <%= yield %>
         </div>
       </div>
-
-
-      
-
+    <% else %>
+        <div>
+          <%= yield %>
+        </div>
+    <% end %>
     <!--<div class="content">-->
     <%#= yield %>
     <!--</div>-->
@@ -70,4 +73,9 @@
   <!--自作のJS-->
   <script src="js/5-1-2.js"></script>
   </body>
+  <footer class="bg-light py-4" style="background-color:#EEEEEE">
+    <div class="container text-center">
+      <P>© 2023 cafetrace. All rights reserved</P>
+    </div>
+  </footer>
 </html>

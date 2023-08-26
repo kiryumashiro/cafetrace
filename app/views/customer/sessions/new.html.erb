@@ -1,32 +1,37 @@
-<div class="container mt-5">
-  <%= render "customer/shared/error_messages", resource: @customer %>
-  <h2 class="mb-4">ログイン</h2>
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "mb-5"}) do |f| %>
-    <div class="form-group">
-      <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password, "パスワード" %>
-      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="form-group form-check">
-        <%= f.check_box :remember_me, class: "form-check-input" %>
-        <%= f.label :remember_me, class: "form-check-label" %>
+<div class="logpage">
+  <%= stylesheet_link_tag 'logpage', media: 'all' %>
+  <div class="container mt-5 min-vh-100 d-flex justify-content-center align-items-center">
+    <%= render "customer/shared/error_messages", resource: @customer %>
+    <div class="login-text">
+    <h1 class="mb-4" style="font-size: 3em;">Login</h1>
+  
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "mb-5"}) do |f| %>
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control custom-input" %>
+      </div>
+  
+      <div class="form-group">
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control custom-input" %>
+      </div>
+  
+      <% if devise_mapping.rememberable? %>
+        <div class="form-group form-check">
+          <%= f.check_box :remember_me, class: "form-check-input" %>
+          <%= f.label :remember_me, class: "form-check-label" %>
+        </div>
+      <% end %>
+  
+      <div class="form-group">
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
       </div>
     <% end %>
-
-    <div class="form-group">
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
+  
+    <p>会員登録がお済みでない方は、<%= link_to 'こちら', new_customer_registration_path %>からログインしてください。</p>
     </div>
-  <% end %>
-
-  <p>会員登録がお済みでない方は、<%= link_to 'こちら', new_customer_registration_path %>からログインしてください。</p>
-
-  <%#= render "customer/shared/links" %>
+  </div>
 </div>
+
+
 
