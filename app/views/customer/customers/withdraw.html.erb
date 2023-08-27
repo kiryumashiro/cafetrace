@@ -1,13 +1,19 @@
-<div class="container text-center">
-  <h1 class="my-4">本当に退会しますか？</h1>
+<div class = "withdraw-image">
+  <div class="container text-center">
+    <div class="withdraw-text">
+    <%= stylesheet_link_tag 'withdraw', media: 'all' %>
+    <h1 class="my-4" style="font-size: 40px; ">本当に退会しますか？</h1>
+    
+    <p style="font-size: 20px;">退会すると、会員登録情報や</p>
+    <p style="font-size: 20px;">これまでの購入履歴が閲覧できなくなります。</p>
+    <p style="font-size: 20px;">退会する場合は、「退会する」をクリックしてください。</p>
   
-  <p>退会すると、会員登録情報や</p>
-  <p>これまでの購入履歴が閲覧できなくなります。</p>
-  <p>退会する場合は、「退会する」をクリックしてください。</p>
+    <div class="d-flex justify-content-center mt-5">
+      <%= button_to '退会しない', customer_path(current_customer), method: :get, class: 'btn btn-primary' %>
+      <span style="width: 20px;"></span> <!-- 20pxの空白 -->
+      <%= button_to '退会する', withdraw_update_customers_path, method: :patch, class: 'btn btn-danger', data: { confirm: '本当に退会しますか？' } %>
+    </div>
 
-  <div class="d-flex justify-content-center mt-5">
-    <%= button_to '退会しない', customer_path(current_customer), method: :get, class: 'btn btn-primary' %>
-    <div class="custom-gap"></div>
-    <%= button_to '退会する', withdraw_update_customers_path, method: :patch, class: 'btn btn-danger', data: { confirm: '本当に退会しますか？' } %>
+    </div>
   </div>
 </div>

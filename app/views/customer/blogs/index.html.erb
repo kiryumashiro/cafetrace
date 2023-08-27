@@ -1,35 +1,37 @@
-<div class="text-center">
-  <%= link_to "マイブログ", my_blogs_blogs_path(current_customer) %><br>
-  <%= link_to "投稿フォーム", new_blog_path %><br>
-  <%= link_to "Topページへ戻る", root_path %>
-  <% @all_blogs.each do |blog| %>
-    <div>
-      <%= image_tag blog.get_image %>
-      <p>店名：<%= blog.name %></p>
-      <p>コメント：<%= blog.description %></p>
-      <p>ユーザーネーム：<%= blog.customer.first_name %></p>
-      <p>コメント数: <%= link_to blog.blog_comments.count, blog_comments_path(blog) %></p>
-    </div>
-    <!--いいね機能-->
-    <div id="favorite_buttons_<%= blog.id %>">
-      <%= render "customer/favorites/favorites", blog: blog %>
-    </div>
-  <% end %>
-</div>
 
-<% @all_blogs.each do |blog| %>
-<div class = "card mb-4 chadow-sm">
-    <%= image_tag blog.get_image %>
-    <div class = "card-body">
-      <div class = "card-text">
-        <p>店名：<%= blog.name %></p>
-        <p>コメント：<%= blog.description %></p>
-      </div>
-      <div class = "d-flex justify-content-between align-items-center">
-        <div class="d-flex justify-content-end">
-          <p>ありがとう</p>
+
+<!--レイアウト整え中-->
+<div class="text-center" style="background-color:#D2B48C">
+  <h1>Blog</h1>
+  <%= link_to "投稿フォーム", new_blog_path %>
+  <div class="row">
+    <% @all_blogs.each do |blog| %>
+      <div class="col-12 mb-4">
+        <div class="card shadow-sm square-card" style="width: 100%; max-width: 500px; margin: 0 auto;">
+          <%= image_tag blog.get_image, style: 'width: 100%; height: auto; object-fit: cover;' %>
+          <div class="card-body custom-text">
+            <div class="card-text" style="font-size: 18px;">
+              <p><i class="fa-solid fa-shop"></i>：<%= blog.name %></p>
+              <p><i class="fa-solid fa-shoe-prints"></i>：<%= blog.description %></p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center" style="font-size: 20px;">
+                <p class="mr-3"><i class="fa-regular fa-comment"></i> <%= link_to blog.blog_comments.count, blog_comments_path(blog) %></p>
+                <div id="favorite_buttons_<%= blog.id %>">
+                  <%= render "customer/favorites/favorites", blog: blog %>
+                </div>
+              </div>
+              <div class="d-flex align-items-center" style="font-size: 18px;">
+                <p><%= blog.customer.first_name %></p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  </div>
 </div>
-<% end %>
+
+
+
+

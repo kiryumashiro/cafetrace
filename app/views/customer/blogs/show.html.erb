@@ -1,15 +1,22 @@
-<div class="text-center">
-  <h1>ブログ詳細ページ</h1>
-  <%= image_tag @blog.get_image %>
-  <p>店名：<%= @blog.name %></p>
-  <p>コメント：<%= @blog.description %></p>
-  <p>ユーザーネーム：<%= @blog.customer.first_name %></p>
-  <p>投稿日：<%= @blog.created_at.strftime('%Y/%m/%d') %></p>
-  
-  <% if @blog.customer == current_customer %>
-  <%= link_to "Edit", edit_blog_path(@blog.id), class: "btn btn-sm btn-success" %>
-  <% end %>
-  <br>
-  <%= link_to "みんなの投稿を見る", blogs_path %>
+<div class="blog-show">
+  <%= stylesheet_link_tag 'blogpage', media: 'all' %>
+  <div class="text-center" style="margin-left: 300px; margin-top: 50px">
+    <h1>MYBlog</h1>
+    <div class="card-text" style="font-size: 20px;">
+      <%= image_tag @blog.get_image, class: "rounded-circle", style: "width: 300px; height: 300px;" %>
+      <p>店名：<%= @blog.name %></p>
+      <p>コメント：<%= @blog.description %></p>
+      <div class="d-inline">
+        <p><i class="fa-regular fa-comment"></i> <%= link_to @blog.blog_comments.count, blog_comments_path(@blog) %>&emsp;<i class="fa-regular fa-heart"></i>&nbsp;<%= @blog.favorites.count %>
+        </p>
+      </div>
+    </div>
+    <p>投稿日：<%= @blog.created_at.strftime('%Y/%m/%d') %></p>
+    <% if @blog.customer == current_customer %>
+      <%= link_to "Edit", edit_blog_path(@blog.id), class: "btn btn-xs btn-success" %>
+    <% end %>
+    <br><br><br>
+    <%= link_to "戻る", my_blogs_blogs_path %>&emsp;
+    <%= link_to "みんなの投稿を見る", blogs_path %>
+  </div>
 </div>
-

@@ -1,0 +1,13 @@
+
+.blog-show {
+  background-image: url('blog.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* ビューポートの高さに合わせる */
+  display: flex;
+  align-items: center;
+}
+
+.blog-edit{
+  width: 500px;
+}

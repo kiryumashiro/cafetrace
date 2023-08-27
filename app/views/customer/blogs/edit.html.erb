@@ -1,25 +1,33 @@
-<div class="text-center">
-    <h3 class="text-center">ブログ編集画面</h3>
-    <%= form_with model: @blog do |f| %>
-    
-      <div class="form-group">
-        <label for="book_title">画像</label><br>
-        <%= image_tag url_for(@blog.image) %>
-        <%= f.file_field :image, accept: "image/*" %>
+
+<div class="text-center min-vh-100" style="background-color:#D2B48C">
+  <br>
+  <h1 class="text-center">Blog editing</h1>
+  <%= stylesheet_link_tag 'blogpage', media: 'all' %>
+  <div class="row justify-content-center">
+    <%= form_with model: @blog, class: "blog-edit" do |f| %>
+    <div class="col-12 mb-4">
+      <div class="card shadow-sm square-card" style="width: 100%; max-width: 500px; margin: 0 auto;">
+        <%= image_tag url_for(@blog.image), style: 'width: 100%; height: auto; object-fit: cover;'%>
+        <div class="card-body custom-text">
+          <div class="form-group" style="font-size: 18px;">
+            <label for="book_title">画像</label><br>
+            <%= f.file_field :image, class: "form-control", accept: "image/*" %>
+          </div>
+          <div class="form-group" style="font-size: 18px;">
+            <label for="book_title">店名</label><br>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group" style="font-size: 18px;">
+            <label for="book_opinion">コメント</label><br>
+            <%= f.text_area :description, class: "form-control" %>
+          </div>
+          <div class="form-group" style="font-size: 18px;">
+            <%= f.submit '保存' ,class: 'btn btn-success' %>
+          </div>
+        </div>
       </div>
-      
-      <div class="form-group">
-        <label for="book_title">店名</label><br>
-        <%= f.text_field :name %>
-      </div>
-      
-      <div class="form-group">
-        <label for="book_opinion">コメント</label><br>
-        <%= f.text_area :description %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.submit '保存' ,class: 'btn btn-success' %>
-      </div>
+    </div>
     <% end %>
+  </div>
+  <%= link_to "戻る", :back, class: "btn btn-secondary" %>
 </div>
