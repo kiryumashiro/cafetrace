@@ -16,7 +16,7 @@ class Customer::CommentsController < ApplicationController
   def destroy
     @blog_comment = BlogComment.find(params[:id])
     @blog_comment.destroy
-    redirect_to blog_comments_path, notice: 'コメントが削除されました。'
+    redirect_to blog_comments_path(@blog_comment.blog), notice: 'コメントが削除されました。'
   end
   
   private

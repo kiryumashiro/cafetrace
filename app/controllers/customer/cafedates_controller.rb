@@ -1,5 +1,9 @@
 class Customer::CafedatesController < ApplicationController
   
+  def show
+    @cafedate = Cafedate.find(params[:id])
+  end
+  
   def index
     case params[:pin_type]
     when 'go_schedule'
@@ -19,6 +23,27 @@ class Customer::CafedatesController < ApplicationController
       render template: 'customer/maps/index'
     end
   end
+  
+  def edit
+    @cafedate = Cafedate.find(params[:id])
+  end
+  
+  def update
+    @cafedate = Cafedate.find(params[:id])
+    if @cafedate.update(cafedate_params)
+      redirect_to @cafedate, notice: 'データが更新されました。'
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    @cafedate = Cafedate.find(params[:id])
+    @cafedate.destroy
+    redirect_to maps_path, notice: 'データが削除されました。'
+  end
+  
+
   
   private
   

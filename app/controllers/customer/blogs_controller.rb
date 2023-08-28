@@ -46,6 +46,13 @@ class Customer::BlogsController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    @blog = Blog.find(params[:id])
+    @blog.destroy
+    redirect_to my_blogs_blogs_path, notice: 'コメントが削除されました。'
+  end
+  
   # 投稿データのストロングパラメータ
   private
 

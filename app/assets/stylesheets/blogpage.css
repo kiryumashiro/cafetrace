@@ -11,3 +11,22 @@
 .blog-edit{
   width: 500px;
 }
+
+.blog-new{
+  background-image: url('blognew.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* ビューポートの高さに合わせる */
+  display: flex;
+  align-items: center;
+}
+
+.form-new {
+  margin-left: 300px;
+  margin-top: 130px;
+}
+
+.custom-button-style{
+  margin-bottom: 0px; /* 上方向へのマージン調整 */
+  margin-left: 210px; /* 左方向へのマージン調整 */
+}

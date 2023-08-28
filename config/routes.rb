@@ -75,7 +75,7 @@ Rails.application.routes.draw do
   #   get 'customers/update'
   # end
     #   # ... 他のルート
-    resources :cafedates, only: [:index, :create]
+    resources :cafedates, only: [:show, :index, :create, :edit, :destroy, :update]
 
       
     

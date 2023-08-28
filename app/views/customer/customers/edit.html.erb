@@ -1,6 +1,6 @@
 <div class="mypage-edit min-vh-100" style="background-color:#FDF5E6; margin-left: 20px;"> <!-- 左に余白を追加 -->
   <h1 class="text-center mb-4 pt-5">会員情報編集</h1>
-  <div class="offset-1 col-10">
+  <div class="offset-2 col-8">
   <%= form_with model: @customer, url: customer_path(@customer), method: :patch, local: true do |f| %>
     <% render "customer/shared/error_messages", resource: @customer %>
     

@@ -1,20 +1,43 @@
-<div class="text-center">
-  <%= link_to "ブログ一覧へ戻る", blogs_path %>
-  <h2>コメントする</h2>
-    <%= form_with model: [@blog, @blog_comment],url: blog_comments_path(@blog.id) do |f| %>
-      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-      <%= f.submit "送信する" %>
-    <% end %>
-  
-  <h1>この投稿のコメント一覧</h1>
-  <% @blog.blog_comments.each do |blog_comment| %>
-    <div>
-      <%= blog_comment.customer.first_name %>
-      <%= blog_comment.created_at.strftime('%Y/%m/%d') %><%= blog_comment.comment %>
-      <%= link_to '削除', blog_comment_path(id: blog_comment.id), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+<div class="min-vh-100" style="background-color:#D2B48C">
+  <div class="container-sm">
+    <div class="row">
+      <div class="col-lg-6 mb-4">
+        <h1>Comments</h1>
+        <% @blog.blog_comments.each do |blog_comment| %>
+          <div class="card shadow-sm mb-3" style="width: 100%;">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <div class="text-end"><%= blog_comment.customer.first_name %></div>
+                <div><%= link_to '削除', blog_comment_path(id: blog_comment.id), method: :delete, data: { confirm: '本当に削除しますか？' } %></div>
+              </div>
+              <p class="text-center" style="font-size: 30px;">
+                <strong>
+                  <%= blog_comment.comment %>
+                </strong>
+              </p>
+              <div class="d-flex justify-content-end mt-2">
+                <div class="text-start"><%= blog_comment.created_at.strftime('%Y/%m/%d') %></div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-lg-6 d-flex flex-column align-items-center" style="margin-top: 70px">
+        <h2>コメントする</h2>
+        <%= form_with model: [@blog, @blog_comment],url: blog_comments_path(@blog.id) do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", style: "width: 400px; height: 200px;", class: "form-control mb-3" %>
+          <div class="d-flex justify-content-end">
+            <%= f.submit "送る", class:"btn btn-outline-light" %>
+          </div>
+        <% end %>
+      </div>
+
     </div>
-  <% end %>
+    <div class="row justify-content-center">
+      <div class="text-center">
+        <%= link_to "戻る", :back %>
+      </div>
+    </div>
+  </div>
 </div>
-
-
 

@@ -1,235 +1,241 @@
-<p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>
-
-<% if flash[:success] %>
-  <div class="alert alert-success">
-    <%= flash[:success] %>
-  </div>
-<% end %>
-
-<!--<div class="map">-->
-<!--  <div id="map">-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--<div type="text/javascript">-->
-<!--  <script>-->
-<!--    function initMap(){-->
-<!--      let map = new google.maps.Map(document.getElementById('map'), {-->
-      <!--center: {lat: 24.2867<%#= @maps.latitude %>, lng: 153.9807<%#= @maps.longitude %> },-->
-<!--      zoom: 15-->
-<!--      });-->
-<!--    }-->
-<!--  </script>-->
+<div class="map-index" style="background-color:#D2B48C">
+  <div id="notice"><%= notice %></div>
+  <div id="alert"><%= alert %></div>
   
-<!--<script>-->
-<!--:-->
-<!--const script = document.createElement('script');-->
-<!--script.src = "https://maps.googleapis.com/maps/api/js?key=<%#= ENV['GOOGLE_MAPS_API_KEY'] %>&libraries=places&callback=initMap";-->
-<!--script.async = true;-->
-<!--:-->
-<!--</script>-->
-
-<div class="container">
-  <center>
-    <header>
-      <h1>My cafemap</h1>
-    </header>
-  </center>
-  <br>
-  <div id='map' class='map'></div>
-</div>
-
-<style>
-#map {
-  height: 600px;
-  width: 100%;
-}
-</style>
-
-<script>
-let map
-
-function initMap(){
-
-}
-</script>
-
-
-<center>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <h1>新規登録</h1>
-      <%= form_with model: @cafedate do |f| %>
-        <div class="form-group">
-          <h2>行った/行きたい</h2>
-          <%= f.collection_radio_buttons :pin_type, Cafedate.pin_types_i18n, :first, :last do |b| %>
-            <%= b.label(class: "mr-4") { b.radio_button(class: "mr-2") + b.text } %>
-          <% end %>
-        </div>
-        
-        <div class="form-group">
-          <h2>画像</h2>
-          <%= f.file_field :image, accept: "image/*" %>
-        </div>
-        
-        <div class="form-group">
-          <h2>店名</h2>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-        
-        <div class="form-group">
-          <h2>住所</h2>
-          <%= f.text_field :address, class: "form-control", id: "formAddress" %><br>
-          latitude:<%= f.text_field :latitude, id: "formLatitude" %>longitude<%= f.text_field :longitude, id: "formLongitude" %>
-          <div id="form_map"></div>
-        </div>
-        
-        <div class="form-group">
-          <h2>コメント</h2>
-          <%= f.text_area :desctiption, class: "form-control", rows: "5" %>
-        </div>
-        
-        <div class="form-group">
-          <%= f.submit '登録', class: "btn btn-primary" %>
-        </div>
-      <% end %>
+  <% if flash[:success] %>
+    <div class="alert alert-success">
+      <%= flash[:success] %>
     </div>
+  <% end %>
+  
+  <!--<div class="map">-->
+  <!--  <div id="map">-->
+  <!--  </div>-->
+  <!--</div>-->
+  
+  <!--<div type="text/javascript">-->
+  <!--  <script>-->
+  <!--    function initMap(){-->
+  <!--      let map = new google.maps.Map(document.getElementById('map'), {-->
+        <!--center: {lat: 24.2867<%#= @maps.latitude %>, lng: 153.9807<%#= @maps.longitude %> },-->
+  <!--      zoom: 15-->
+  <!--      });-->
+  <!--    }-->
+  <!--  </script>-->
+    
+  <!--<script>-->
+  <!--:-->
+  <!--const script = document.createElement('script');-->
+  <!--script.src = "https://maps.googleapis.com/maps/api/js?key=<%#= ENV['GOOGLE_MAPS_API_KEY'] %>&libraries=places&callback=initMap";-->
+  <!--script.async = true;-->
+  <!--:-->
+  <!--</script>-->
+  
+  <div class="container">
+    <center>
+      <header>
+        <h1>My cafemap</h1>
+      </header>
+    </center>
+    <br>
+    <div id='map' class='map'></div>
   </div>
-</div>
-
-</center>
-
-
-<style>
-  #form_map{
-    height: 300px;
+  
+  <style>
+  #map {
+    height: 600px;
     width: 100%;
   }
-</style>
-
-<script>
-let formMarker;
-let markerData = JSON.parse('<%== @cafedates_json || [] %>')
-let marker = [];
-let infoWindow = [];
-const startPosition = () => {
-  if( markerData[0] != null ) {
-    return { lat: markerData[0].lat, lng: markerData[0].lng }
-  } else {
-    return { lat: 35.6894, lng: 139.6917 }
-  }
-}
-function initMap() {
-  //@cafedates
-  console.log(startPosition())
-  let mapLatLng = new google.maps.LatLng(startPosition());
-  console.log(mapLatLng)
-  let map;
-  let icon;
-  const redPin = "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
-  const bluePin = "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+  </style>
   
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: mapLatLng,
-    zoom: 15,
-  });
-
-  for (let i = 0; i< markerData.length; i++) {
-    if (markerData[i]['pin_type'] == 'go_schedule_pins') {
-      icon = redPin
+  <script>
+  let map
+  
+  function initMap(){
+  
+  }
+  </script>
+  
+  
+  <center>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1 style="margin-top: 50px;">New cafemap</h1>
+        <%= form_with model: @cafedate do |f| %>
+          <div class="form-group">
+            <h2>行きたいカフェもしくは、行ったカフェで登録</h2>
+            <%= f.collection_radio_buttons :pin_type, Cafedate.pin_types_i18n, :first, :last do |b| %>
+              <%= b.label(class: "mr-4") { b.radio_button(class: "mr-2") + b.text } %>
+            <% end %>
+          </div>
+          
+          <div class="form-group">
+            <h2>画像</h2>
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
+          
+          <div class="form-group">
+            <h2>店名</h2>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <h2>住所</h2>
+            <%= f.text_field :address, class: "form-control", id: "formAddress" %><br>
+            <!--緯度・経度の確認用-->
+            <%= f.hidden_field :latitude, id: "formLatitude" %>
+            <%= f.hidden_field :longitude, id: "formLongitude" %>
+            <div id="form_map"></div>
+          </div>
+          
+          <div class="form-group">
+            <h2>コメント</h2>
+            <%= f.text_area :desctiption, class: "form-control", rows: "5" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.submit '登録', class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  </center>
+  
+  
+  <style>
+    #form_map{
+      height: 300px;
+      width: 100%;
+    }
+  </style>
+  
+  <script>
+  let formMarker;
+  let markerData = JSON.parse('<%== @cafedates_json || [] %>')
+  let marker = [];
+  let infoWindow = [];
+  const startPosition = () => {
+    if( markerData[0] != null ) {
+      return { lat: markerData[0].lat, lng: markerData[0].lng }
     } else {
-      icon = bluePin
+      return { lat: 35.6894, lng: 139.6917 }
     }
-    markerLatLng = new google.maps.LatLng({lat: markerData[i]['lat'], lng: markerData[i]['lng']});
-    marker[i] = new google.maps.Marker({
-      position: markerLatLng,
-      map: map,
-      icon: icon
-    })
-    
-    infoWindow[i] = new google.maps.InfoWindow({
-      content: `
-        <a href="cafedates/${markerData[i]['id']}">${markerData[i]['name']}</a>
-      `
-    })
-    
-    markerEvent(i)
   }
-
-  //formMap
-  var mapPosition = { lat: 35.6867908, lng: 139.67357602473145 }
-  var mapArea = document.getElementById('form_map');
-  var mapOptions = {
-    center: mapPosition,
-    zoom: 16
-  };
-  var formMap = new google.maps.Map(mapArea, mapOptions);
-  formMarker = new google.maps.Marker({
-    map: formMap,
-    position: mapPosition
-  });
-  
-  $('#formAddress').on('change', (e) => {
-    if(formMarker != null) {
-      formMarker.setMap(null)
-    }
+  function initMap() {
+    //@cafedates
+    console.log(startPosition())
+    let mapLatLng = new google.maps.LatLng(startPosition());
+    console.log(mapLatLng)
+    let map;
+    let icon;
+    const redPin = "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
+    const bluePin = "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
     
-    var geocoder = new google.maps.Geocoder();
-    const target = e.target.value
-    geocoder.geocode( { 'address': target }, function(results, status) {
-      if (status == "OK") {
-        const center = results[0].geometry.location
-        formMap.setCenter(center);
-        formMarker = new google.maps.Marker({
-          map: formMap,
-          position: center
-        });
-        $("#formLatitude").val(center.lat())
-        $("#formLongitude").val(center.lng())
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: mapLatLng,
+      zoom: 15,
+    });
+    
+    console.log(markerData);
+  
+    for (let i = 0; i< markerData.length; i++) {
+      if (markerData[i]['pin_type'] == 'go_schedule_pins') {
+        icon = redPin
       } else {
-        alert('Goecode was not successful for the following reson: ' + status);
+        icon = bluePin
       }
+      markerLatLng = new google.maps.LatLng({lat: markerData[i]['lat'], lng: markerData[i]['lng']});
+      marker[i] = new google.maps.Marker({
+        position: markerLatLng,
+        map: map,
+        icon: icon
+      })
+      
+      infoWindow[i] = new google.maps.InfoWindow({
+        content: `
+          <a href="cafedates/${markerData[i]['id']}">${markerData[i]['name']}</a>
+        `
+      })
+      
+      markerEvent(i)
+    }
+  
+    //formMap
+    var mapPosition = { lat: 35.6867908, lng: 139.67357602473145 }
+    var mapArea = document.getElementById('form_map');
+    var mapOptions = {
+      center: mapPosition,
+      zoom: 16
+    };
+    var formMap = new google.maps.Map(mapArea, mapOptions);
+    formMarker = new google.maps.Marker({
+      map: formMap,
+      position: mapPosition
+    });
+    
+    $('#formAddress').on('change', (e) => {
+      if(formMarker != null) {
+        formMarker.setMap(null)
+      }
+      
+      var geocoder = new google.maps.Geocoder();
+      const target = e.target.value
+      geocoder.geocode( { 'address': target }, function(results, status) {
+        if (status == "OK") {
+          const center = results[0].geometry.location;
+          formMap.setCenter(center);
+          formMarker = new google.maps.Marker({
+            map: formMap,
+            position: center
+          });
+          $("#formLatitude").val(center.lat())
+          $("#formLongitude").val(center.lng())
+        } else {
+          alert('Goecode was not successful for the following reson: ' + status);
+        }
+      })
     })
-  })
-  
-  google.maps.event.addListener(formMap, 'click', (e) => clickListner(e, formMap))
-  
-  function clickListner(e, map) {
-    if (formMarker != null) {
-      formMarker.setMap(null)
+    
+    google.maps.event.addListener(formMap, 'click', (e) => clickListner(e, formMap))
+    
+    function clickListner(e, map) {
+      if (formMarker != null) {
+        formMarker.setMap(null)
+      }
+      
+      const lat = e.latLng.lat();
+      const lng = e.latLng.lng();
+      
+      formMarker = new google.maps.Marker({
+        map: map,
+        position: { lat, lng }
+      })
+      
+      formMarker.set
+      
+      $("#formLatitude").val(lat);
+      $("#formLongitude").val(lng);
     }
     
-    const lat = e.latLng.lat();
-    const lng = e.latLng.lng();
-    
-    formMarker = new google.maps.Marker({
-      map: map,
-      position: { lat, lng }
-    })
-    
-    formMarker.set
-    
-    $("#formLatitude").val(lat);
-    $("#formLongitude").val(lng);
+    function markerEvent(i) {
+      marker[i].addListener('click', () => {
+        infoWindow[i].open(map, marker[i]);
+      })
+    }
   }
+  </script>
   
-  function markerEvent(i) {
-    marker[i].addListener('click', () => {
-      infoWindow[i].open(map, marker[i]);
-    })
-  }
-}
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
-
-<%= @go_schedule_cafedates.inspect %><br>
-
-<%= @been_cafedates.inspect %>
-
-<%= link_to '行きたいカフェ一覧', cafedates_path(pin_type: 'go_schedule') %>
-
-<%= link_to '行ったカフェ一覧', cafedates_path(pin_type: 'been') %>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
+  
+  <%= @go_schedule_cafedates.inspect %><br>
+  
+  <%= @been_cafedates.inspect %>
+  
+  <%= link_to '行きたいカフェ一覧', cafedates_path(pin_type: 'go_schedule') %>
+  
+  <%= link_to '行ったカフェ一覧', cafedates_path(pin_type: 'been') %>
+</div>

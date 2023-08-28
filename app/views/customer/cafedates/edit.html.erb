@@ -1,0 +1,34 @@
+
+<center>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1 style="margin-top: 50px;">New cafemap</h1>
+        <%= form_with model: @cafedate do |f| %>
+          <div class="form-group">
+            <h2>行きたいカフェもしくは、行ったカフェで登録</h2>
+            <%= f.collection_radio_buttons :pin_type, Cafedate.pin_types_i18n, :first, :last do |b| %>
+              <%= b.label(class: "mr-4") { b.radio_button(class: "mr-2") + b.text } %>
+            <% end %>
+          </div>
+          
+          <div class="form-group">
+            <h2>画像</h2>
+            <%= image_tag url_for(@cafedate.image), style: "width: 300px; height: 300px;"%><br>
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
+          
+          
+          <div class="form-group">
+            <h2>コメント</h2>
+            <%= f.text_area :desctiption, class: "form-control", rows: "5" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.submit '登録', class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</center>

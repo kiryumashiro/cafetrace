@@ -2,8 +2,11 @@
 
 <!--レイアウト整え中-->
 <div class="text-center" style="background-color:#D2B48C">
-  <h1>Blog</h1>
-  <%= link_to "投稿フォーム", new_blog_path %>
+  <%= stylesheet_link_tag 'blogpage', media: 'all' %>
+  <div class="d-flex justify-content-center align-items-center mb-3 custom-button-style">
+    <h1 style="margin-right: 100px;">Blog</h1>
+    <%= link_to "投稿フォーム", new_blog_path, class: "btn btn-xs btn-secondary" %>
+  </div>
   <div class="row">
     <% @all_blogs.each do |blog| %>
       <div class="col-12 mb-4">

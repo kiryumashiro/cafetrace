@@ -2,5 +2,6 @@
 <h1><%= params[:pin_type] == 'go_schedule' ? '行きたいカフェ一覧' : '行ったカフェ一覧' %></h1>
 <% @cafedates.each do |cafedate| %>
   <!-- カフェの表示内容 -->
-  <%= cafedate.name %>
+  <%= link_to cafedate.name, cafedate_path(cafedate) %>
+  <%= image_tag cafedate, class: "rounded-circle", style: "width: 300px; height: 300px;" %>
 <% end %>
