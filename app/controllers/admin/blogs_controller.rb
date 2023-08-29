@@ -1,22 +1,24 @@
 class Admin::BlogsController < ApplicationController
   before_action :authenticate_admin!
-  
-  def index
-    @blogs = Blog.all
-  end
-  
+
   def customer_blogs
-    @blog = Blog.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def show
     @blog = Blog.find(params[:id])
-    # @customer = Customer.find(params[:id])
   end
 
   def destroy
     @blog = Blog.find(params[:id])
     @blog.destroy
-    redirect_to admin_blogs_path, notice: '投稿が削除されました。'
+    redirect_to admin_path, notice: '投稿が削除されました。'
+  end
+  
+  # 投稿データのストロングパラメータ
+  private
+
+  def blog_params
+    params.require(:blog).permit(:customer_id, :blog_id, :name, :image, :description)
   end
 end

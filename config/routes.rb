@@ -27,10 +27,10 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update] 
-    resources :blogs, only: [:index, :show, :destroy] do
+    resources :blogs, only: [:show, :destroy] do
       resources :comments, only: [:destroy]
       collection do
-        get 'customer_blogs'
+        get 'customer_blogs/:id', to: 'blogs#customer_blogs', as: :customer_blogs
       end
     end
   end

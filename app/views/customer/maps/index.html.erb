@@ -230,12 +230,5 @@
   </script>
   
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
-  
-  <%= @go_schedule_cafedates.inspect %><br>
-  
-  <%= @been_cafedates.inspect %>
-  
-  <%= link_to '行きたいカフェ一覧', cafedates_path(pin_type: 'go_schedule') %>
-  
-  <%= link_to '行ったカフェ一覧', cafedates_path(pin_type: 'been') %>
+
 </div>

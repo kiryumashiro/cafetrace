@@ -1,9 +1,0 @@
-<div class="text-center">
-  <h1>会員の投稿一覧</h1>
-  <% @blogs.each do |blog| %>
-    <div>
-      <%= link_to blog.name, admin_blog_path(blog) %>
-      <%= link_to '削除', admin_blog_path(blog), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-    </div>
-  <% end %>
-</div>

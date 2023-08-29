@@ -1,7 +1,19 @@
-<%= @cafedate.inspect %>
-<%= @cafedate.name %>
-<%= @cafedate.address %>
-<%= @cafedate.desctiption %>
-<%= image_tag @cafedate.get_image, class: "rounded-circle", style: "width: 300px; height: 300px;" %>
-<%= link_to "Edit", edit_cafedate_path(@cafedate.id), class: "btn btn-xs btn-success" %>
 
+<div class="cafedate-show">
+  <%= stylesheet_link_tag 'cafedatepage', media: 'all' %>
+  <div class="text-center" style="margin-left: 600px; margin-top: 100px">
+    <div class="card-text" style="font-size: 18px;">
+      <%= image_tag @cafedate.get_image, style: "width: 200px; height: 200px; object-fit: cover;" %>
+      <p>：<%= @cafedate.address %></p>
+      <p>：<%= @cafedate.name %></p>
+      <p>：<%= @cafedate.desctiption %></p>
+    </div>
+    <p>投稿日：<%= @cafedate.created_at.strftime('%Y/%m/%d') %></p>
+    <% if @cafedate.customer_id == current_customer %>
+      <%= link_to "Edit", edit_cafedate_path(@cafedate.id), class: "btn btn-xs btn-success" %>
+      <%= link_to '削除', cafedate_path(@cafedate), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+    <% end %>
+    <br><br>
+    <%= link_to "戻る", :back %>&emsp;
+  </div>
+</div>

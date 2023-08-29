@@ -1,20 +1,44 @@
-<div>
-  <%= flash[:notice] %>
-</div>  
-<div class="container mt-5">
-  <h2 class="mb-4 text-center"><%= @customer.last_name %> <%= @customer.first_name %>さんの会員詳細</h2>
+
+<div class="mypage-show min-vh-100">
+  <div class="container">
+  <div>
+    <%= flash[:notice] %>
+  </div>
     <div class="row">
-      <div class="col-md-6">
-        <div class="pl-5">
-          <p class="my-3"><strong>会員ID </strong><span style="margin-left:150px;"><%= @customer.id %></span></p>
-          <p class="my-3"><strong>氏名 </strong><span style="margin-left:160px;"><%= @customer.last_name %> <%= @customer.first_name %></span></p>
-          <p class="my-3"><strong>電話番号 </strong><span style="margin-left:125px;"><%= @customer.phone_number %></span></p>
-          <p class="my-3"><strong>メールアドレス </strong><span style="margin-left:80px;"><%= @customer.email %></span></p>
-          <p class="my-3"><strong>会員ステータス </strong><span style="margin-left:90px; color:<%= @customer.is_deleted ? 'gray' : 'green' %>;"><%= @customer.is_deleted ? '退会済み' : '有効' %></span></p>
-           
-          <%= link_to '編集する', edit_admin_customer_path(@customer), class: 'btn btn-success btn-space' %>
-          <%= link_to "会員一覧へ", admin_customers_path, class: 'btn btn-info' %>
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+  
+        <h1 class="mb-4">Mypage</h1>
+  
+        <h2>登録情報</h2>
+        <%= link_to '編集する', edit_admin_customer_path(@customer), class: 'btn btn-success btn-space' %>
+        <%= link_to "ブログ一覧", customer_blogs_admin_blogs_path(@customer), class: 'btn btn-info' %>
+        <%= link_to "会員一覧へ", admin_customers_path, class: 'btn btn-info' %>
+        <div class="table-responsive">
+          <br>
+          <table class="table table-bordered">
+            <tr>
+              <th class="table-secondary w-25">氏名</th>
+              <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">電話番号</th>
+              <td><%= @customer.phone_number %></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">メールアドレス</th>
+              <td><%= @customer.email %></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">会員ステータス</th>
+              <td><span style="color:<%= @customer.is_deleted ? 'gray' : 'green' %>;"><%= @customer.is_deleted ? '退会済み' : '有効' %></span></td>
+            </tr>
+          </table>
         </div>
+  
+      </div>
+      <div class="col-md-2">
       </div>
     </div>
+  </div>
 </div>
