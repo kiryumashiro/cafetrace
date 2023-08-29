@@ -20,7 +20,10 @@
             
             <%= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, method: :post , class: "btn btn-secondary btn-lg", tabindex: "-1", role: "button", "aria-disabled" => "false" %>
             
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete , class: "btn btn-secondary btn-lg", tabindex: "-1", role: "button", "aria-disabled" => "false" %>
+            <% if customer_signed_in? %>
+          　　  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete , class: "btn btn-secondary btn-lg", tabindex: "-1", role: "button", "aria-disabled" => "false" %>
+            <% end %>
+            
         </div>
       </div>
   </div>
