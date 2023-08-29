@@ -3,6 +3,10 @@ class Cafedate < ApplicationRecord
   has_one_attached :image
   enum pin_type: { go_schedule_pins: 0, been_pins: 1}
   
+  # validates :image, presence:true
+  # validates :name, presence:true
+  # validates :address, presence:true
+  
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image (2).jpg')

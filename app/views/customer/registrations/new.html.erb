@@ -1,15 +1,16 @@
 <div class="signpage">
   <%= stylesheet_link_tag 'signpage', media: 'all' %>
   <div class="container mt-5 min-vh-100">
-    <%= render "customer/shared/error_messages", resource: @customer %>
+    
     
     <div class="signin-text">
-    <h1 class="mb-4" style="font-size: 3em;">signup</h1><br><br>
-  
+    <h1 style="font-size: 3em;">signup</h1>
+    <div class="text-center">
+      <%= render "customer/shared/error_messages", resource: @customer %>
+    </div>
     <%#= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
     <%= form_with model: @customer, url: customer_registration_path, local: true, html: { class: 'custom-form' } do |f| %>
 
-    
       <div class="row">
         <label class="col-lg-3">名前</label>
         <div class="col-lg-3">
@@ -61,7 +62,7 @@
           </div>
         </div>
       </div>
-
+    
     <% end %>
     
     <br>

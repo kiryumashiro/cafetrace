@@ -1,4 +1,14 @@
 ja:
+  activerecord:
+    models:
+      customer: 
+    attributes:
+       customer:
+         last_name: 姓
+         first_name: 名
+         phone_number: 電話番号
+         email: メールアドレス
+         password: パスワード
   enums:
     cafedate:
       pin_type:

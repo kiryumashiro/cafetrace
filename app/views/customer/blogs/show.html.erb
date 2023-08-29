@@ -1,9 +1,9 @@
 <div class="blog-show">
   <%= stylesheet_link_tag 'blogpage', media: 'all' %>
-  <div class="text-center" style="margin-left: 300px; margin-top: 50px">
+  <div class="text-center" style="margin-left: 280px; margin-top: 50px">
     <h1>MYBlog</h1>
-    <div class="card-text" style="font-size: 20px;">
-      <%= image_tag @blog.get_image, class: "rounded-circle", style: "width: 300px; height: 300px;" %>
+    <div class="card-text" style="font-size: 18px;">
+      <%= image_tag @blog.get_image, class: "rounded-circle", style: "width: 200px; height: 200px;" %>
       <p>店名：<%= @blog.name %></p>
       <p>コメント：<%= @blog.description %></p>
       <div class="d-inline">

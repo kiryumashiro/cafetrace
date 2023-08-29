@@ -4,6 +4,11 @@ class Customer < ApplicationRecord
   has_many :cafedates, dependent: :destroy
   has_many :blog_comments, dependent: :destroy
   
+   validates :last_name, presence:true
+   validates :first_name, presence:true
+   validates :phone_number, length: { is: 11 }, presence:true
+   validates :email, presence:true
+   
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|
       customer.last_name = 'guest'

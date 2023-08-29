@@ -19,7 +19,7 @@ class Customer::CafedatesController < ApplicationController
       flash[:success] = "投稿が成功しました"
       redirect_to maps_path
     else
-      flash[:success] = "失敗"
+      flash[:alert] = "失敗"
       render template: 'customer/maps/index'
     end
   end
