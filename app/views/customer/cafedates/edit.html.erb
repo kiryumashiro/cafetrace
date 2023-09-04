@@ -3,8 +3,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 offset-md-3">
+          
           <h1 style="margin-top: 50px;">New cafemap</h1>
           <%= form_with model: @cafedate do |f| %>
+          
             <div class="form-group">
               <h2>行きたいカフェもしくは、行ったカフェで登録</h2>
               <%= f.collection_radio_buttons :pin_type, Cafedate.pin_types_i18n, :first, :last do |b| %>
@@ -27,7 +29,9 @@
             <div class="form-group">
               <%= f.submit '登録', class: "btn btn-primary" %>
             </div>
+            
           <% end %>
+          
         </div>
       </div>
     </div>

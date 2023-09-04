@@ -1,19 +1,6 @@
 Rails.application.routes.draw do
   root to: 'customer/homes#top'
-  # namespace :admin do
-  #   get 'comments/destroy'
-  # end
-  # namespace :admin do
-  #   get 'blogs/index'
-  #   get 'blogs/show'
-  #   get 'blogs/destroy'
-  # end
-  # namespace :admin do
-  #   get 'customers/index'
-  #   get 'customers/show'
-  #   get 'customers/edit'
-  #   get 'customers/update'
-  # end
+
   devise_for :customers, controllers: {
     sessions:      'customer/sessions',
     registrations: 'customer/registrations'
@@ -22,7 +9,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions:      'admin/sessions',
   }
-  
+
   # 管理者側ルーティング
   namespace :admin do
     get '/' => 'homes#top'
@@ -34,7 +21,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
   # 会員側ルーティング
   scope module: :customer do
     get '/about' => 'homes#about'
@@ -47,6 +34,7 @@ Rails.application.routes.draw do
         # post '/guest_login', to: 'guest_sessions#create'
       end
     end
+    resources :cafedates, only: [:show, :index, :create, :edit, :destroy, :update]
     resources :blogs do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy, :index]
@@ -54,36 +42,10 @@ Rails.application.routes.draw do
         get 'my_blogs'
       end
     end
-    
-
-
-
-
-    # Rails.application.routes.draw do
-  # namespace :admin do
-  #   get 'comments/destroy'
-  # end
-  # namespace :admin do
-  #   get 'blogs/index'
-  #   get 'blogs/show'
-  #   get 'blogs/destroy'
-  # end
-  # namespace :admin do
-  #   get 'customers/index'
-  #   get 'customers/show'
-  #   get 'customers/edit'
-  #   get 'customers/update'
-  # end
-    #   # ... 他のルート
-    resources :cafedates, only: [:show, :index, :create, :edit, :destroy, :update]
-
-      
-    
     devise_scope :customer do
       post 'customer/guest_sign_in', to: 'sessions#guest_sign_in'
     end
   end
-
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

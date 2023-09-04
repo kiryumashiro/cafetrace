@@ -4,7 +4,8 @@
   <div class="text-center" style="margin-left: 600px; margin-top: 200px">
     <div class="card-text" style="font-size: 18px;">
       <%= image_tag @cafedate.get_image, style: "width: 200px; height: 200px; object-fit: cover;" %>
-      <P><i class="fa-solid fa-map-pin"></i>：<%= link_to edit_cafedate_path do %>
+      <P><i class="fa-solid fa-map-pin"></i>：
+           <%= link_to edit_cafedate_path do %>
              <%= @cafedate.pin_type %>
            <% end %>
       </P>

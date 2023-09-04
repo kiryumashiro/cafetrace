@@ -15,6 +15,7 @@
   </head>
 
   <body>
+    <!--会員サインイン時の表示画面-->
     <% if customer_signed_in? %>
       <div class="row">
         <div class="col-md-3 sidebar min-vh-100" style="background-color:#808080">
@@ -44,10 +45,12 @@
                 </ul>
               </nav>
         </div>
+        <!--各項目の表示画面-->
         <div class="col-md-9 main-content">
           <%= yield %>
         </div>
       </div>
+    <!--管理者サインイン時の表示画面-->
     <% elsif admin_signed_in? %>
       <div class="row">
         <div class="col-md-3 sidebar min-vh-100" style="background-color:#808080">
@@ -60,6 +63,7 @@
                 </ul>
               </nav>
         </div>
+        <!--各項目の表示画面-->
         <div class="col-md-9 main-content">
           <%= yield %>
         </div>
@@ -69,14 +73,17 @@
           <%= yield %>
         </div>
     <% end %>
+  
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
   <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-2/js/5-1-2.js">
   <!--自作のJS-->
   <script src="js/5-1-2.js"></script>
   </body>
+  
   <footer class="bg-light py-4" style="background-color:#EEEEEE">
     <div class="container text-center">
       <P>© 2023 cafetrace. All rights reserved</P>
     </div>
   </footer>
+  
 </html>
