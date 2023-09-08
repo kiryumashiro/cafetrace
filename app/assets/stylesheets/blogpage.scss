@@ -22,11 +22,35 @@
 }
 
 .form-new {
-  margin-left: 300px;
-  margin-top: 130px;
+  margin-left: 250px;
+  margin-top: 170px;
 }
 
 .custom-button-style{
   margin-bottom: 0px; /* 上方向へのマージン調整 */
   margin-left: 210px; /* 左方向へのマージン調整 */
+}
+
+.blog-index{
+  background-color: #D2B48C;
+}
+
+.blog-index h1{
+  margin-right: 100px;
+}
+
+.index-square-card{
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.myblog-square-card{
+  width: 100%; 
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.myblog{
+  background-color: #D2B48C;
 }

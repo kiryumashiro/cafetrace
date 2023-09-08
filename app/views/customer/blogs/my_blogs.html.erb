@@ -1,12 +1,13 @@
 
 
-<div class="text-center min-vh-100" style="background-color:#D2B48C">
+<div class="text-center">
+  <div class="myblog min-vh-100">
   <%= stylesheet_link_tag 'blogpage', media: 'all' %>
   <h1>My Blogs</h1>
   <div class="row">
     <% @my_blogs.each do |blog| %>
       <div class="col-12 mb-4">
-        <div class="card shadow-sm square-card" style="width: 100%; max-width: 500px; margin: 0 auto;">
+        <div class="card shadow-sm myblog-square-card">
           <%= image_tag blog.get_image, style: 'width: 100%; height: auto; object-fit: cover;' %>
           <div class="card-body custom-text">
             <div class="card-text" style="font-size: 18px;">
@@ -28,5 +29,6 @@
         </div>
       </div>
     <% end %>
+  </div>
   </div>
 </div>

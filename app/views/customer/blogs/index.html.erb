@@ -1,16 +1,17 @@
 
 
 <!--レイアウト整え中-->
-<div class="text-center min-vh-100" style="background-color:#D2B48C">
+<div class="text-center">
+  <div class="blog-index min-vh-100">
   <%= stylesheet_link_tag 'blogpage', media: 'all' %>
   <div class="d-flex justify-content-center align-items-center mb-3 custom-button-style">
-    <h1 style="margin-right: 100px;">Blog</h1>
+    <h1>Blog</h1>
     <%= link_to "投稿フォーム", new_blog_path, class: "btn btn-xs btn-secondary" %>
   </div>
   <div class="row">
     <% @all_blogs.each do |blog| %>
       <div class="col-12 mb-4">
-        <div class="card shadow-sm square-card" style="width: 100%; max-width: 500px; margin: 0 auto;">
+        <div class="card shadow-sm index-square-card">
           <%= image_tag blog.get_image, style: 'width: 100%; height: auto; object-fit: cover;' %>
           <div class="card-body custom-text">
             <div class="card-text" style="font-size: 18px;">
@@ -32,6 +33,7 @@
         </div>
       </div>
     <% end %>
+  </div>
   </div>
 </div>
 
