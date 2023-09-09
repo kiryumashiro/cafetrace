@@ -1,31 +1,12 @@
-
-.blog-show {
-  background-image: image-url('blog.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 100vh; /* ビューポートの高さに合わせる */
-  display: flex;
-  align-items: center;
+// ブログ全体
+.image-tag{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
-.blog-edit{
-  width: 500px;
-}
 
-.blog-new{
-  background-image: url('blognew.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 100vh; /* ビューポートの高さに合わせる */
-  display: flex;
-  align-items: center;
-}
-
-.form-new {
-  margin-left: 250px;
-  margin-top: 170px;
-}
-
+// ブログindexページのcss
 .custom-button-style{
   margin-bottom: 0px; /* 上方向へのマージン調整 */
   margin-left: 210px; /* 左方向へのマージン調整 */
@@ -45,6 +26,71 @@
   margin: 0 auto;
 }
 
+
+// ブログshowページのcss
+.blog-show {
+  background-image: image-url('blog.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* ビューポートの高さに合わせる */
+  display: flex;
+  align-items: center;
+}
+
+.rounded-circle{
+  width: 200px;
+  height: 200px;
+}
+
+.show-text-center{
+  margin-left: 280px;
+  margin-top: 50px
+}
+
+.show-card-text{
+  font-size: 18px;
+}
+
+
+// ブログnewページのcss
+.blog-new{
+  background-image: url('blognew.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* ビューポートの高さに合わせる */
+  display: flex;
+  align-items: center;
+}
+
+.form-new {
+  margin-left: 250px;
+  margin-top: 170px;
+}
+
+
+// ブログeditページのcss
+.myblog-edit{
+  background-color: #D2B48C;
+  padding-top: 35px;
+}
+
+.blog-edit{
+  width: 500px;
+}
+
+.edit-square-card{
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+.edit-form-group{
+  font-size: 18px;
+}
+
+
+// ブログmyblogページのcss
 .myblog-square-card{
   width: 100%; 
   max-width: 500px;

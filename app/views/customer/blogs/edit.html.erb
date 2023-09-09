@@ -1,27 +1,26 @@
 
-<div class="text-center min-vh-100" style="background-color:#D2B48C">
-  <br>
-  <h1 class="text-center">Blog editing</h1>
+<div class="text-center">
+  <div class="myblog-edit min-vh-100">
   <%= stylesheet_link_tag 'blogpage', media: 'all' %>
   <div class="row justify-content-center">
     <%= form_with model: @blog, class: "blog-edit" do |f| %>
     <div class="col-12 mb-4">
-      <div class="card shadow-sm square-card" style="width: 100%; max-width: 500px; margin: 0 auto;">
-        <%= image_tag url_for(@blog.image), style: 'width: 100%; height: auto; object-fit: cover;'%>
+      <div class="card shadow-sm edit-square-card">
+        <%= image_tag url_for(@blog.image), class: "image-tag" %>
         <div class="card-body custom-text">
-          <div class="form-group" style="font-size: 18px;">
+          <div class="edit-form-group">
             <label for="book_title">画像</label><br>
             <%= f.file_field :image, class: "form-control", accept: "image/*" %>
           </div>
-          <div class="form-group" style="font-size: 18px;">
+          <div class="edit-form-group">
             <label for="book_title">店名</label><br>
             <%= f.text_field :name, class: "form-control" %>
           </div>
-          <div class="form-group" style="font-size: 18px;">
+          <div class="edit-form-group">
             <label for="book_opinion">コメント</label><br>
             <%= f.text_area :description, class: "form-control" %>
           </div>
-          <div class="form-group" style="font-size: 18px;">
+          <div class="edit-form-group">
             <%= f.submit '保存' ,class: 'btn btn-success' %>
           </div>
         </div>
@@ -30,4 +29,5 @@
     <% end %>
   </div>
   <%= link_to "戻る", :back, class: "btn btn-secondary" %>
+  </div>
 </div>

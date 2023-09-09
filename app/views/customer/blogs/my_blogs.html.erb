@@ -8,7 +8,7 @@
     <% @my_blogs.each do |blog| %>
       <div class="col-12 mb-4">
         <div class="card shadow-sm myblog-square-card">
-          <%= image_tag blog.get_image, style: 'width: 100%; height: auto; object-fit: cover;' %>
+          <%= image_tag blog.get_image, class: "image-tag" %>
           <div class="card-body custom-text">
             <div class="card-text" style="font-size: 18px;">
               <p><i class="fa-solid fa-shop"></i>：<%= link_to blog.name, blog_path(blog) %></p>
