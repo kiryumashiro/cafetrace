@@ -6,9 +6,9 @@
     <div class="card-text" style="font-size: 18px;">
       <%= image_tag @cafedate.get_image, class: "image-tag" %>
       <P><i class="fa-solid fa-map-pin"></i>：
-           <%= link_to edit_cafedate_path do %>
-             <%= @cafedate.pin_type %>
-           <% end %>
+        <%= link_to edit_cafedate_path do %>
+          <%= t("enums.cafedate.pin_type.#{@cafedate.pin_type}") %>
+        <% end %>
       </P>
       <p><i class="fa-solid fa-location-dot"></i>：<%= @cafedate.address %></p>
       <p><i class="fa-solid fa-shop"></i>：<%= @cafedate.name %></p>
