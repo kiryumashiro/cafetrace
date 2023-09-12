@@ -1,9 +1,10 @@
 
 <div class="cafedate-show">
   <%= stylesheet_link_tag 'cafedatepage', media: 'all' %>
-  <div class="text-center" style="margin-left: 600px; margin-top: 200px">
+  <div class="text-center">
+    <div class="cafedate-showall">
     <div class="card-text" style="font-size: 18px;">
-      <%= image_tag @cafedate.get_image, style: "width: 200px; height: 200px; object-fit: cover;" %>
+      <%= image_tag @cafedate.get_image, class: "image-tag" %>
       <P><i class="fa-solid fa-map-pin"></i>：
            <%= link_to edit_cafedate_path do %>
              <%= @cafedate.pin_type %>
@@ -20,6 +21,7 @@
     <% end %>
     <br>
     <%= link_to "戻る", maps_path %>&emsp;
+  </div>
   </div>
 </div>
 

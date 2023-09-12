@@ -1,11 +1,13 @@
-<div class="text-center min-vh-100" style="background-color:#D2B48C">
+<div class="text-center">
+  <%= stylesheet_link_tag 'cafedatepage', media: 'all' %>
+  <div class="cafedate-indexall min-vh-100">
   <div class="container">
     <h1><%= params[:pin_type] == 'go_schedule' ? '行きたいカフェ一覧' : '行ったカフェ一覧' %></h1>
     <div class="album py-5 bg-light">
       <div class="row">
       <% @cafedates.each do |cafedate| %>
         <div class="col-md-4">
-          <%= image_tag cafedate.get_image, class: "rounded-circle shadow-sm", style: "width: 150px; height: 150px; object-fit: cover;" %>
+          <%= image_tag cafedate.get_image, class: "index-cafedate rounded-circle shadow-sm" %>
           <div style="font-size: 25px;">
             <%= link_to cafedate.name, cafedate_path(cafedate) %>
           </div>
@@ -14,6 +16,7 @@
       <% end %>
       </div>
     </div>
+  </div>
   </div>
 </div>
 

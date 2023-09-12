@@ -1,4 +1,6 @@
-<div style="background-color:#D2B48C">
+<div>
+  <%= stylesheet_link_tag 'cafedatepage', media: 'all' %>
+  <div class="cafedate-edit">
   <center>
     <div class="container">
       <div class="row">
@@ -16,7 +18,7 @@
             
             <div class="form-group">
               <h2>画像</h2>
-              <%= image_tag url_for(@cafedate.image), style: "width: 300px; height: 300px; object-fit: cover;"%><br>
+              <%= image_tag url_for(@cafedate.image), class: "edit-image"%><br>
               <%= f.file_field :image,style: "margin-top: 10px", accept: "image/*" %>
             </div>
             
@@ -36,5 +38,6 @@
       </div>
     </div>
   </center>
+  </div>
 </div>
 

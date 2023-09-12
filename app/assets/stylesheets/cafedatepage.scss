@@ -1,3 +1,11 @@
+// cafedate全体のcss
+.image-tag{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+// cafedateのshowページのcss
 .cafedate-show {
   background-image: image-url('cafeshow.jpg');
   background-size: cover;
@@ -5,4 +13,31 @@
   height: 100vh; /* ビューポートの高さに合わせる */
   display: flex;
   align-items: center;
+}
+
+.cafedate-showall{
+  margin-left: 600px;
+  margin-top: 200px;
+}
+
+// cafedateのindexページのcss
+.cafedate-indexall{
+  background-color: #D2B48C;
+}
+
+.index-cafedate{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+// cafedateのeditページのcss
+.cafedate-edit{
+  background-color: #D2B48C;
+}
+
+.edit-image{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 }
