@@ -22,11 +22,11 @@ class Customer::BlogsController < ApplicationController
   end
   
   def index
-    @all_blogs = Blog.all
+    @all_blogs = Blog.all.order(created_at: :desc)
   end
   
   def my_blogs
-    @my_blogs = current_customer.blogs
+    @my_blogs = current_customer.blogs.order(created_at: :desc)
   end
   
   def edit
