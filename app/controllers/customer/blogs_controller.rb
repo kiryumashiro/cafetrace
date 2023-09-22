@@ -1,4 +1,5 @@
 class Customer::BlogsController < ApplicationController
+  
     # 新規ブログの投稿
   def new
     @blog = Blog.new
@@ -31,6 +32,10 @@ class Customer::BlogsController < ApplicationController
   
   def edit
     @blog = Blog.find(params[:id])
+    
+    if current_customer != @blog.customer
+      redirect_to blogs_path, alert: "他のユーザーのブログを編集することはできません。"
+    end
   end
   
   def update
