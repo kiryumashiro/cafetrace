@@ -1,7 +1,7 @@
     <% if blog.favorited_by?(current_customer) %>
-      <%= link_to blog_favorites_path(blog), method: :delete, remote: true do %>♥<%= blog.favorites.count %>
+      <%= link_to blog_favorites_path(blog), method: :delete, remote: true do %> ♥ <%= blog.favorites.count %>
       <% end %>
     <% else %>
-      <%= link_to blog_favorites_path(blog), method: :post, remote: true do %>♡<%= blog.favorites.count %>
+      <%= link_to blog_favorites_path(blog), method: :post, remote: true do %> ♡ <%= blog.favorites.count %>
       <% end %>
     <% end %>
